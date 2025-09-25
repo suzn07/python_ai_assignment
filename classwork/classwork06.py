@@ -30,14 +30,14 @@ for alp in alphas:
 
 plt.plot(alphas, r2values)
 
+plt.show()
+
 best_r2 = max(r2values)
 print(best_r2)
 
 idx = r2values.index(best_r2)
 
 best_apl = alphas[idx]
-
-plt.show()
 
 print(f"Best R2 = {best_r2}, Best alpha = {best_apl}")
 
