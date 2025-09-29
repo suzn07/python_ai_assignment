@@ -12,7 +12,7 @@ y = df["Weight"].values
 plt.scatter(X,y,color='blue')
 plt.xlabel('Height')
 plt.ylabel('Weight')
-plt.title('Scatter Plot of Weight and Height')
+plt.title('Scatter Plot of height and weight')
 plt.show()
 
 model = LinearRegression()
@@ -25,7 +25,7 @@ plt.scatter(X, y,color='blue')
 plt.plot(X, y_value_predict, color='red', label='Linear Regression')
 plt.xlabel('Height')
 plt.ylabel('Weight')
-plt.title('Linear Regression of Weight and Height')
+plt.title('Linear Regression of Height and Weight')
 plt.show()
 
 RMSE = np.sqrt(mean_squared_error(y, y_value_predict))
