@@ -1,18 +1,34 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
 
-valuesOfN = [500, 1000, 2000, 5000, 10000, 15000, 20000, 50000, 100000]
+df = pd.read_csv('weight-height.csv')
 
-for n in valuesOfN:
-    firstDice = np.random.randint(1, 7, n)
-    secondDice = np.random.randint(1, 7, n)
+X = df[["Height"]].values
+y = df["Weight"].values
 
-    sumOfDices = firstDice + secondDice
+plt.scatter(X,y,color='blue')
+plt.xlabel('Height')
+plt.ylabel('Weight')
+plt.title('Scatter Plot of Weight and Height')
+plt.show()
 
-    h,h2 = np.histogram(sumOfDices, range(2, 14))
+model = LinearRegression()
 
-    plt.bar(h2[:-1], h/n)
+model.fit(X, y)
 
-    plt.title(f"n={n}")
+y_value_predict = model.predict(X)
 
-    plt.show()
+plt.scatter(X, y,color='blue')
+plt.plot(X, y_value_predict, color='red', label='Linear Regression')
+plt.xlabel('Height')
+plt.ylabel('Weight')
+plt.title('Linear Regression of Weight and Height')
+plt.show()
+
+RMSE = np.sqrt(mean_squared_error(y, y_value_predict))
+r2 = r2_score(y, y_value_predict)
+
+print(f"RMSE = {RMSE}, r2 ={r2}")
