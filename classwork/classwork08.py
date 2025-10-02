@@ -39,4 +39,28 @@ print("Accuracy:",metrics.accuracy_score(y_test,Y_pred))
 print("Precision:",metrics.precision_score(y_test,Y_pred))
 print("Recall:",metrics.recall_score(y_test,Y_pred))
 
+y_pred = model.predict(X_test)
+
+correct_yes = (y_pred == 1) & (y_test == 1)
+incorrect_yes = (y_pred == 1) & (y_test == 0)
+correct_no = (y_pred == 0) & (y_test == 0)
+incorrect_no = (y_pred == 0) & (y_test == 1)
+
+plt.scatter(X_test.loc[correct_yes, X_test.columns[0]], X_test.loc[correct_yes, X_test.columns[1]],
+            c="blue", marker="o", label="pred yes correct")
+
+plt.scatter(X_test.loc[incorrect_yes, X_test.columns[0]], X_test.loc[incorrect_yes, X_test.columns[1]],
+            c="blue", marker="x", label="pred yes incorrect")
+
+plt.scatter(X_test.loc[correct_no, X_test.columns[0]], X_test.loc[correct_no, X_test.columns[1]],
+            c="red", marker="o", label="pred no correct")
+
+plt.scatter(X_test.loc[incorrect_no, X_test.columns[0]], X_test.loc[incorrect_no, X_test.columns[1]],
+            c="red", marker="x", label="pred no incorrect")
+
+plt.xlabel("exam1")
+plt.ylabel("exam2")
+plt.title("Predicted vs Actual")
+plt.legend()
+plt.show()
 
