@@ -14,7 +14,7 @@ df.dropna(inplace=True)
 X = df.drop(['mpg', 'name', 'origin'], axis=1)
 y = df['mpg']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=47)
 
 alphas = np.logspace(-3, 3, 50)
 ridge_scores = []
@@ -59,13 +59,13 @@ print("Lasso alpha value:", ridge_alpha_value, " R² =", max(lasso_scores))
 # y = df['mpg']
 
 # 3)
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=47)
 
 # 4) for this i have use for loop in the code for alpha in alphas.
 
 # 5)
-# Ridge alpha value: 0.001 with R² = 0.7942348920666245
-# Lasso alpha value: 0.001 with R² = 0.7941834683177982
-# 5)
-# R² = 0.7942348920666245
-# R² = 0.7941834683177982
+# Ridge alpha value: 0.001  R² = 0.7708037033828341
+# Lasso alpha value: 0.001  R² = 0.7708027450334227
+# 6)
+# R² = 0.7708037033828341
+# R² = 0.7708027450334227 here we can see slightly very small change in the value of R^2 after 0.7708037 and 0.7708027
